@@ -10,6 +10,7 @@ all: dwm
 
 .c.o:
 	${CC} -c ${CFLAGS} $<
+	echo ${CFLAGS} | sed -e 's/\ /\n/g' | grep -e "-[ID]" > compile_flags.txt
 
 ${OBJ}: config.h config.mk
 

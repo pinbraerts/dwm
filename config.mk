@@ -4,7 +4,7 @@ VERSION = 6.4
 # Customize below to fit your system
 
 # paths
-PREFIX = /usr/local
+PREFIX = ${HOME}
 MANPREFIX = ${PREFIX}/share/man
 
 X11INC = /usr/X11R6/include
@@ -36,4 +36,4 @@ LDFLAGS  = ${LIBS}
 #LDFLAGS = ${LIBS}
 
 # compiler and linker
-CC = cc
+CC = clang
