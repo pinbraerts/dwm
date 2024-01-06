@@ -9,7 +9,7 @@ static const char *fonts[]          = { "FiraCode Nerd Font Mono:size=14" };
 static const int usealtbar          = 1;        /* 1 means use non-dwm status bar */
 static const char *altbarclass      = "Polybar"; /* Alternate bar class name */
 static const char *alttrayname      = "tray";    /* Polybar tray instance name */
-static const char *altbarcmd        = "$HOME/bar.sh"; /* Alternate bar launch command */
+static const char *altbarcmd        = "bar.sh"; /* Alternate bar launch command */
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
