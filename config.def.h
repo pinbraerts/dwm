@@ -61,7 +61,7 @@ static const Layout layouts[] = {
 /* commands */
 static const char *launch[]  = { "launch", NULL };
 static const char *terminal[] = { "st", NULL };
-static const char *browser[] = { "/bin/sh", "-c", "site=$(mzm ddg_fzf.sh) && surf \"$site\"", NULL };
+static const char *browser[] = { "/bin/sh", "-c", "site=$(st -i -g 50x20 -t Surf -n Surf ddg_fzf.sh) && surf \"$site\"", NULL };
 static const char *packages[] = { "st", "-g", "150x40", "-i", "xbps", NULL };
 
 static const Key keys[] = {
