@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=DWM
+Comment=A dynamic tiling Wayland compositor
+Exec=dwm-start
+Type=Application
