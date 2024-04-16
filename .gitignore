@@ -1,0 +1,5 @@
+*.o
+patches/
+dwm
+dwm-msg
+compile_flags.txt
