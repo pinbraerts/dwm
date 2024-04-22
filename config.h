@@ -65,19 +65,17 @@ static const char *sessions[] = { "st", "tmux-select", NULL };
 static const char *launch[]   = { "/bin/sh", "-c", "st -i -t Launch -n Launch launch | sh", NULL };
 static const char *packages[] = { "st", "-i", "xbps", NULL };
 static const char *start_write[] = { "Write", NULL };
-static const char *check[] = { "/home/pinbraerts/dotfiles/main", NULL };
-static const char *check_in[] = { "/bin/sh", "-c", "echo tty | /home/pinbraerts/dotfiles/main", NULL };
-static const char *check_out[] = { "/bin/sh", "-c", "/home/pinbraerts/dotfiles/main | xargs echo", NULL };
-static const char *check_inout[] = { "/bin/sh", "-c", "echo tty | /home/pinbraerts/dotfiles/main | xargs echo", NULL };
+static const char *grab_screen[] = { "/bin/sh", "-c", "maim | xclip -selection clipboard -t image/png", NULL };
+static const char *grab_window[] = { "/bin/sh", "-c", "xdotool getactivewindow | xargs -r maim -i | xclip -selection clipboard -t image/png", NULL };
+static const char *grab_area[] = { "/bin/sh", "-c", "maim -s | xclip -selection clipboard -t image/png", NULL };
 static const char *kill_session[] = { "loginctl", "kill-session", "self", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = launch } },
-	{ MODKEY,                       XK_y,      spawn,          {.v = check } },
-	{ MODKEY|ShiftMask,             XK_y,      spawn,          {.v = check_in } },
-	{ MODKEY|ControlMask,           XK_y,      spawn,          {.v = check_out } },
-	{ MODKEY|ShiftMask|ControlMask, XK_y,      spawn,          {.v = check_inout } },
+	{ MODKEY,                       XK_y,      spawn,          {.v = grab_window } },
+	{ MODKEY|ShiftMask,             XK_y,      spawn,          {.v = grab_screen } },
+	{ MODKEY|ControlMask,           XK_y,      spawn,          {.v = grab_area } },
 	{ MODKEY,                       XK_s,      spawn,          {.v = browser } },
 	{ MODKEY,                       XK_t,      spawn,          {.v = terminal } },
 	{ MODKEY,                       XK_grave,  spawn,          {.v = sessions } },
