@@ -58,28 +58,8 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
-/* commands */
-static const char *terminal[] = { "st", NULL };
-static const char *browser[]  = { "/bin/sh", "-c", "st -i -t Surf -n Surf fzf_autocomplete | xargs -r surf", NULL };
-static const char *sessions[] = { "st", "tmux-select", NULL };
-static const char *launch[]   = { "/bin/sh", "-c", "st -i -t Launch -n Launch launch | sh", NULL };
-static const char *packages[] = { "st", "-i", "xbps", NULL };
-static const char *start_write[] = { "Write", NULL };
-static const char *grab_screen[] = { "/bin/sh", "-c", "maim | xclip -selection clipboard -t image/png", NULL };
-static const char *grab_window[] = { "/bin/sh", "-c", "xdotool getactivewindow | xargs -r maim -i | xclip -selection clipboard -t image/png", NULL };
-static const char *grab_area[] = { "/bin/sh", "-c", "maim -s | xclip -selection clipboard -t image/png", NULL };
-static const char *kill_session[] = { "loginctl", "kill-session", "self", NULL };
-
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = launch } },
-	{ MODKEY,                       XK_y,      spawn,          {.v = grab_window } },
-	{ MODKEY|ShiftMask,             XK_y,      spawn,          {.v = grab_screen } },
-	{ MODKEY|ControlMask,           XK_y,      spawn,          {.v = grab_area } },
-	{ MODKEY,                       XK_s,      spawn,          {.v = browser } },
-	{ MODKEY,                       XK_t,      spawn,          {.v = terminal } },
-	{ MODKEY,                       XK_grave,  spawn,          {.v = sessions } },
-	{ MODKEY,                       XK_u,      spawn,          {.v = packages } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_l,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_h,      focusstack,     {.i = -1 } },
@@ -111,7 +91,6 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {.i = 0} },
-	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = kill_session} },
 };
 
 /* button definitions */
@@ -121,7 +100,6 @@ static const Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = terminal } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
